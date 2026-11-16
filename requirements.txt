@@ -1,0 +1,2 @@
+# producer (kafka-python is already installed in the spark-notebook container)
+kafka-python>=2.0.2
