@@ -59,7 +59,7 @@ Copy `neo4j.env.example` to `neo4j.env` and put the real password in it. Make su
 ```bash
 docker exec -it --env-file neo4j.env spark-cluster-spark-notebook-1 python3 /opt/spark/work-dir/src/mathiasNapoles/final_project_part2/consumer.py --fresh
 ```
-Wait for `Streaming started: ...`. `--fresh` wipes the checkpoints and the streamed data in Neo4j (use it for the demo). Without Neo4j: add `--sink console`.
+Wait for `Streaming started: ...`. `--fresh` wipes the checkpoints and the streamed data in Neo4j (use it for the demo).
 
 ### 4. Producer (terminal 2)
 ```bash
