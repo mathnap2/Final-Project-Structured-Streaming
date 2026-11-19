@@ -16,9 +16,8 @@ import os
 import shutil
 import sys
 
+from spark_utils import SparkUtils   # first: it runs findspark, so pyspark can be imported
 from pyspark.sql import functions as F
-from spark_utils import SparkUtils
-
 HERE = os.path.dirname(os.path.abspath(__file__))
 CATALOG = os.path.join(HERE, "catalog")
 CHECKPOINT = "/opt/spark/work-dir/checkpoints/music_fp2"

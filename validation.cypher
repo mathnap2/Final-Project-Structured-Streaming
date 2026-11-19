@@ -1,6 +1,3 @@
-// Final Project Part II - Cypher queries to validate the Neo4j sink
-// Run them in Neo4j Browser (http://localhost:7474) while producer + consumer are running.
-
 // 1) Nodes per label (run it a few times: GenreWindow / ArtistTrend keep growing)
 MATCH (n)
 RETURN labels(n)[0] AS label, count(*) AS total
@@ -42,11 +39,11 @@ ORDER BY window_start DESC, plays DESC
 LIMIT 20;
 
 // 7) Trending artists in the latest sliding window
-MATCH (t:ArtistTrend)
-WITH max(t.window_start) AS latest
-MATCH (t:ArtistTrend {window_start: latest})
-RETURN t.artist AS artist, t.plays AS plays, t.likes AS likes, t.skips AS skips, t.trend_score AS score
-ORDER BY score DESC;
+    MATCH (t:ArtistTrend)
+    WITH max(t.window_start) AS latest
+    MATCH (t:ArtistTrend {window_start: latest})
+    RETURN t.artist AS artist, t.plays AS plays, t.likes AS likes, t.skips AS skips, t.trend_score AS score
+    ORDER BY score DESC;
 
 // 8) Graph bonus: "users who liked this song also liked..." (simple recommendation)
 MATCH (s:Song)<-[:LIKED]-(:User)-[:LIKED]->(other:Song)-[:IN_ALBUM]->(:Album)-[:BY]->(a:Artist)
